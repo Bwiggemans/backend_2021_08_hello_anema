@@ -1,6 +1,5 @@
 package nl.novi.hello.service;
 
-import nl.novi.hello.dto.BookRequestDto;
 import nl.novi.hello.exception.BadRequestException;
 import nl.novi.hello.exception.RecordNotFoundException;
 import nl.novi.hello.model.Book;
@@ -47,18 +46,12 @@ public class BookService {
         }
 }
 
-    public int addBook(BookRequestDto bookRequestDto) {
-
-        String isbn = bookRequestDto.getIsbn();
+    public int addBook(Book book) {
+        String isbn = book.getIsbn();
         List<Book> books = (List<Book>)bookRepository.findAllByIsbn(isbn);
         if (books.size() > 0) {
             throw new BadRequestException("Isbn already exists!!!");
         }
-
-        Book book = new Book();
-        book.setAuthor(bookRequestDto.getAuthor());
-        book.setTitle(bookRequestDto.getTitle());
-        book.setIsbn(bookRequestDto.getIsbn());
 
         Book newBook = bookRepository.save(book);
         return newBook.getId();
