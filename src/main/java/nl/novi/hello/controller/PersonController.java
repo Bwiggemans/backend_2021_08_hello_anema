@@ -38,8 +38,6 @@ public class PersonController {
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(newId).toUri();
-
         return ResponseEntity.created(location).build();
     }
-    
 }

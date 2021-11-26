@@ -21,5 +21,4 @@ public class ExceptionController {
     public ResponseEntity<Object> exception(BadRequestException exception) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMessage());
     }
-
 }

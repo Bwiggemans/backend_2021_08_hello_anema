@@ -43,5 +43,4 @@ public class NameController {
         names.add(name);
         return "Added!";
     }
-
 }
